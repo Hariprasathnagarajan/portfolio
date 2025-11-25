@@ -1,0 +1,7 @@
+[build]
+  command = "rm -rf node_modules package-lock.json && npm install --no-optional && npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_FLAGS = "--no-optional"
