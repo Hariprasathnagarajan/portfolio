@@ -1,12 +1,9 @@
-# netlify.toml
 [build]
-  # Use Node 20.x on Netlify, remove any cached node artifacts, install without optional native binaries, then build.
-  # Note: use --omit=optional for npm >=9/10 compatibility.
-  command = "rm -rf node_modules package-lock.json && npm install --omit=optional && npm run build"
+
+  command = "npm run build"
   publish = "dist"
 
 [build.environment]
   # Force Netlify to use Node 20 (choose 20.19.0 or newer 20.x)
   NODE_VERSION = "20.19.0"
-  # Recommended npm flag; Netlify will honor this too if present
-  NPM_FLAGS = "--omit=optional"
+
