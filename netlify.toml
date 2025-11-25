@@ -1,4 +1,10 @@
+# netlify.toml
 [build]
-  command = " npm run build"
+  # Clean any node artifacts, install without optional native deps, then build
+  command = "rm -rf node_modules package-lock.json && npm install --no-optional && npm run build"
   publish = "dist"
 
+[build.environment]
+  NODE_VERSION = "18"
+  # recommended but optional
+  NPM_FLAGS = "--no-optional"
