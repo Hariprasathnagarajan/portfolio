@@ -1,0 +1,181 @@
+:root {
+  --primary-color: #5a36a2;
+  --text-color: #333;
+  --light-bg: #f9f9f9;
+  --border-color: #ddd;
+  --input-bg: #fff;
+}
+/* Main content container */
+.company-creation-container1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 9;
+  
+  /*margin-top: 80px;  Prevents merging with header */
+}
+
+/* Inner Content */
+.company-creation-inner-container1 {
+  /*width: 90%;*/
+  max-width: 800px;
+  /*padding: 20px;*/
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Title */
+.company-creation-title {
+  font-size: 22px;
+  display: flex;
+ justify-content: left;
+  margin-bottom: 10px;
+  font-weight: bold;
+  border-bottom: 2px solid #000;
+  padding-bottom: 5px;
+}
+
+/* Name Row */
+.name-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+/* Form Group */
+.company-creation-form-group1 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.company-creation-label {
+  font-size: 14px;
+  font-weight: 400;
+  color: #777;
+  margin-bottom: 5px;
+}
+
+.company-creation-mandatory {
+  color: #e74c3c;
+}
+
+/* Input Fields */
+.company-creation-input1 {
+  width: 100%;
+  padding: 6px;
+  font-size: 14px;
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  box-sizing: border-box;
+}
+
+.company-creation-input1:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* Upload Area */
+.company-creation-upload-area1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+  border: 2px dashed var(--border-color);
+  border-radius: 8px;
+  background-color: #f8f9fc;
+  padding: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.company-creation-upload-area1:hover {
+  border-color: var(--primary-color);
+  background-color: #eef1f7;
+}
+
+.company-creation-upload-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.browse-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.browse-btn:hover {
+  background-color: #462f87;
+  transform: scale(1.05);
+}
+
+/* Buttons */
+.company-creation-submit,
+.company-creation-cancel {
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 6px;
+}
+
+.company-creation-submit {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.company-creation-submit:hover {
+  background: #462f87;
+}
+
+.company-creation-cancel {
+  background-color: #95a5a6;
+  color: #fff;
+}
+
+.company-creation-cancel:hover {
+  background-color: #7f8c8d;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .name-row {
+      grid-template-columns: 1fr; /* Stack the fields */
+  }
+
+  .company-creation-inner-container1 {
+      width: 90%;
+      padding: 10px;
+  }
+
+  .company-creation-buttons {
+      text-align: center;
+  }
+
+  .company-creation-submit,
+  .company-creation-cancel {
+      margin-left: 0;
+      margin-bottom: 10px;
+  }
+}

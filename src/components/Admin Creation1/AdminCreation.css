@@ -1,0 +1,231 @@
+:root {
+  --primary-color: #5a36a2;
+  --text-color: #333;
+  --border-color: #ddd;
+  --input-bg: #fff;
+}
+
+
+/* Container */
+.admin-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: center;
+  width: 100%; /* Increased width */
+  height: 100vh;
+  border-radius: 20px;
+  background: white;
+}
+.Admin-form{
+  width: 90%;
+}
+/* Admin Box */
+
+/* Title */
+
+/* Profile Image */
+.profile-image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.edit-icon {
+  position: absolute;
+  bottom: 0;
+  right: 15%;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.Admin-form{
+  margin-bottom: 25px;
+}
+/* Form */
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  gap: 15px;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 280px;
+  text-align: left;
+}
+
+.form-group label {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background-color: var(--input-bg);
+  box-sizing: border-box;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* Address Field */
+.form-group textarea {
+  width: 100%;
+  height: 80px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background-color: var(--input-bg);
+  resize: none;
+}
+
+/* Password Field */
+.password-field {
+  position: relative;
+}
+
+.password-field input {
+  width: 100%;
+  padding-right: 30px;
+}
+
+.eye-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 16px;
+  color: #777;
+}
+
+/* Buttons */
+.save-btn1, .cancel-btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+  border: none;
+  color: white;
+}
+
+.save-btn1 {
+  background: var(--primary-color);
+}
+
+.cancel-btn {
+  background: #ddd;
+}
+
+.save-btn1:hover {
+  background: #462f87;
+}
+
+.cancel-btn:hover {
+  background: #777;
+}
+
+/* Scrollbar for zoom level above 110% */
+@media (min-width: 1024px) and (min-resolution: 150dpi) {
+  body {
+    overflow: auto; /* Allow scrolling if zoomed above 110% */
+  }
+
+  .admin-container {
+    transform: scale(1); /* Keep it normal at 100% scale */
+  }
+}
+
+/* Responsive Design */
+
+/* Medium Screens (Tablets, Small Laptops) */
+@media (max-width: 1024px) {
+  .admin-container {
+    width: 95vw;
+    min-height: 70vh;
+    max-height: 100vh;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    border-radius: 10px;
+  }
+
+  .admin-box {
+    max-width: 85vw;
+  }
+
+  .edit-icon {
+    right: 5%;
+  }
+}
+
+/* Small Screens (Mobile Devices) */
+@media (max-width: 768px) {
+  body {
+    height: 100vh;
+  }
+
+  .admin-container {
+    width: 95vw;
+    height: 80vh;
+    padding: none;
+    border-radius: 10px;
+  }
+
+  .admin-box {
+    width: 100%;
+    height: auto;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .edit-icon {
+    right: 5%;
+  }
+}
+
+/* Ultra Small Screens (Phones & Zoomed-in Views) */
+@media (max-width: 480px) {
+  .admin-title {
+    font-size: 1rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .save-btn1, .cancel-btn {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .edit-icon {
+    right: 3%;
+  }
+}

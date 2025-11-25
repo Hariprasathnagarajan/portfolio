@@ -1,0 +1,168 @@
+.login-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #000b58; /* Dark Blue */
+  margin: 0;
+  padding: 0;
+  flex-direction: column;
+}
+
+.login-container {
+  background-color: #f9f9f9; /* Pale Yellow */
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.login-h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #006a67; /* Teal */
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.login-label {
+  display: block;
+  font-size: 14px;
+  color: #003161; /* Navy Blue */
+  margin-bottom: 5px;
+}
+
+.login-input {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #006a67; /* Teal */
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.login-input:focus {
+  border-color: #006a67; /* Teal */
+  outline: none;
+}
+
+.required {
+  color: #ff4141; /* Bright Red */
+  font-size: 12px;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #006a67; /* Teal */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #004d4b; /* Darker Teal */
+}
+
+.forgot-password-link {
+  text-align: right;
+  margin-top: 10px;
+}
+
+.forgot-password-link a {
+  color: #006a67; /* Teal */
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.forgot-password-link a:hover {
+  text-decoration: underline;
+}
+
+.otp-timer {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #777; /* Gray */
+}
+
+.resend-otp-link {
+  color: #006a67; /* Teal */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.resend-otp-link:hover {
+  text-decoration: underline;
+}
+
+.messages {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.messages ul {
+  list-style-type: none;
+  padding: 0;
+  color: #ff4141; /* Bright Red */
+}
+
+.messages li {
+  background-color: #f8d7da; /* Light Red */
+  color: #721c24; /* Dark Red */
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.login-status {
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.login-success {
+  background-color: #d4edda; /* Light Green */
+  color: #155724; /* Dark Green */
+}
+
+.login-failure {
+  background-color: #f8d7da; /* Light Red */
+  color: #721c24; /* Dark Red */
+}
+
+.login-div-alignment {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: 20px;
+    width: 90%;
+  }
+
+  .login-h2 {
+    font-size: 20px;
+  }
+
+  .login-btn {
+    font-size: 14px;
+  }
+
+  .forgot-password-link a {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,91 @@
+:root {
+  --primary-color: #5a36a2;
+  --text-color: #333;
+  --border-color: #ddd;
+  --input-bg: #fff;
+}
+
+.audit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh; /* Changed from fixed height */
+  background: white;
+  overflow-y: auto;   /* Enable scrolling */
+  padding-bottom: 5px; /* Give space for buttons */
+}
+
+.audit-box {
+  width: 100%;
+  padding: 107px 10px 40px; /* Top padding for header and bottom for buttons */
+  background: #ffffff;
+  border-radius: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.audit-title {
+  font-size: 22px;
+  color: #000b58;
+  width: auto;
+  margin-right: 70%;
+}
+
+.audit-form {
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .audit-container {
+    width: 95vw;
+    min-height: 70vh;
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    border-radius: 10px;
+  }
+
+  .audit-box {
+    max-width: 85vw;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    height: 100vh;
+  }
+
+  .audit-container {
+    width: 95vw;
+    height: auto;
+    padding: 3vh;
+    border-radius: 10px;
+  }
+
+  .audit-box {
+    width: 100%;
+    height: auto;
+  }
+
+  .audit-title {
+    margin-right: auto;
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .audit-title {
+    font-size: 1rem;
+  }
+
+  .save-btn1,
+  .cancel-btn {
+    font-size: 12px;
+    padding: 8px;
+  }
+}

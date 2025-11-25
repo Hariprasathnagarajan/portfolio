@@ -1,0 +1,127 @@
+:root {
+  --primary-color: #5a36a2;
+  --dark-blue: #000b58;
+  --deep-blue: #003161;
+  --teal: #006a67;
+  --light-teal: #67fff4;
+  --beige: #D4EBF8;
+  --text-color: #333;
+  --light-bg: #f9f9f9;
+  --border-color: #ddd;
+}
+
+/* Main container for center alignment */
+.company-creation-container1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #f5f5f5;
+}
+
+/* Card styling */
+.company-creation-inner-container1 {
+  max-width: 650px;
+  padding: 25px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Title styling */
+.company-creation-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--dark-blue);
+  margin-bottom: 16px;
+  border-bottom: 2px solid var(--primary-color);
+  width: 100%;
+  padding-bottom: 6px;
+}
+
+/* Two-column name fields */
+.name-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+/* Form Buttons container */
+.company-creation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+/* Submit button styling */
+.company-creation-submit {
+  background-color: var(--primary-color) !important;
+  color: #fff !important;
+  font-size: 0.75rem !important;
+  padding: 6px 14px !important;
+  border-radius: 5px !important;
+  text-transform: none !important;
+}
+
+.company-creation-submit:hover {
+  background-color: #462f87 !important;
+}
+
+/* Cancel button styling */
+.company-creation-cancel {
+  background-color: #95a5a6 !important;
+  color: #fff !important;
+  font-size: 0.75rem !important;
+  padding: 6px 14px !important;
+  border-radius: 5px !important;
+  text-transform: none !important;
+}
+
+.company-creation-cancel:hover {
+  background-color: #7f8c8d !important;
+}
+
+/* Loading overlay styling */
+.loading-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.loading-popup-content {
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive: stack inputs vertically on small screens */
+@media (max-width: 768px) {
+  .name-row {
+    grid-template-columns: 1fr;
+  }
+
+  .company-creation-inner-container1 {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .company-creation-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

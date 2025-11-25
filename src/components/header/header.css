@@ -1,0 +1,349 @@
+/* ========== THEME ========== */
+body.light-theme {
+  background-color: #fff;
+  color: #000;
+}
+
+body.dark-theme {
+  background-color: #121212;
+  color: #fff;
+}
+.chat-badge {
+  position: absolute;
+  top: -5px;
+  right: -7px;
+  background: white;
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  min-width: 15px;
+  min-height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* ========== HEADER CONTAINER ========== */
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000B58 !important;
+  gap: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  margin-left: auto;
+}
+
+/* ========== LOGO ========== */
+.logo-container {
+  flex: 0 0 auto;
+  margin-right: 30px;
+}
+
+.header-logo {
+  height: 32px;
+  object-fit: contain;
+  background-color: white;
+  border-radius: 5px;
+  margin: 0 45px 0 20px;
+}
+
+/* ========== PROFILE IMAGE ========== */
+.header-profile-image,
+.profile-icon1,
+.profile-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  list-style: none;
+}
+
+.profile-image {
+  width: 30px;
+  height: 30px;
+}
+
+/* ========== PROFILE BUTTON ========== */
+.profilebtn {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  background: none;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+  list-style: none;
+
+}
+
+.profilebtn:hover {
+  background: #66ccec;
+}
+
+/* ========== PROFILE DROPDOWN ========== */
+.profile-dropdown {
+  position: absolute;
+  top: 70px;
+  right: 10px;
+  background: #f9f9f9;
+  border: 1px solid #006A67;
+  border-radius: 5px;
+  padding: 10px;
+  width: 280px;
+    list-style: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-dropdown p {
+  margin: 5px 0;
+}
+
+/* ========== DROPDOWN ITEMS ========== */
+.dropdown-menu {
+  list-style: armenian;
+  padding: 0;
+  margin: 10px 0 0;
+}
+
+.dropdown-item {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.dropdown-item:hover {
+  background: #f0f0f0;
+}
+
+/* ========== SIGNOUT BUTTON ========== */
+.signout-button {
+  margin-top: 10px;
+  width: 100%;
+  border: none;
+  padding: 8px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  background: antiquewhite;
+  color: red;
+  text-align: center;
+}
+
+.signout-button:hover {
+  background: #c82333;
+  color: antiquewhite;
+}
+
+/* ========== SEARCH BAR ========== */
+.search-bar-container {
+  margin-left: 20px;         /* ✅ Push it slightly away from logo */
+  margin-left: auto;        /* ✅ Push everything else to the right */
+  flex: 0 1 auto;            /* ✅ Shrink to fit its content if needed */
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 5px;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 250px;
+  transition: width 0.25s ease;
+}
+
+
+.search-input {
+  height: 30px;
+  width: 100% !important;
+  padding: 5px !important;
+  border: 1px solid #006A67 !important;
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  color: #333;
+  flex: 1;
+  min-width: 0;
+  transition: width 0.25s ease, opacity 0.25s ease;
+}
+
+.search_icon {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  right: 30px;
+  cursor: pointer;
+}
+
+/* ========== SEARCH SUGGESTIONS ========== */
+.search-suggestions {
+  position: absolute;
+  top: 35px;
+  left: 0;
+  width: 100%;
+  max-height: 150px;
+  overflow-y: auto;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  border: 1px solid #006A67;
+  border-radius: 4px;
+  background: #FFF4B7;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.suggestion-item {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+}
+
+.suggestion-item:hover {
+  background-color: #006A67;
+  color: white;
+}
+
+.no-suggestions {
+  font-size: 14px;
+  color: #aaa;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* ========== NOTIFICATION BUTTON ========== */
+.notificationbtn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.notificationbtn:hover {
+  background: transparent;
+}
+
+.notification-icon {
+  width: 28px;
+  height: 28px;
+  filter: invert(1);
+}
+
+.notification-badge {
+  position: absolute;
+  top: 5px;
+  right: 58px;
+  background: white;
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  min-width: 15px;
+  min-height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* ========== NOTIFICATION DROPDOWN ========== */
+.notification-dropdown {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background: #f9f9f9;
+  width: 380px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+
+/* ========== CLOSE BUTTON ========== */
+.close-button {
+  background: #000B58;
+  border: none;
+  font-size: 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-left: 270px;
+  margin-bottom: 10px;
+}
+
+.close-button:hover {
+  background: #003161;
+  color: white;
+}
+
+/* ========== ICON BAR ========== */
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Adjust this value */
+  margin-right: 16px;
+}
+
+.chart-icon {
+ color: white;
+ opacity: 0.96;
+}
+
+/* ========== MISC ========== */
+.name-input-container {
+  margin-right: 10px;
+}
+
+.name-input {
+  padding: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* ========== MEDIA QUERIES ========== */
+@media screen and (max-width: 931px) {
+  .Asidebar-header-mobile {
+    width: 100% !important;
+    position-area: y-end;
+  }
+}
+
+@media (max-width: 850px) {
+  .search-bar-container .search-input {
+    width: 0;
+    opacity: 0;
+    padding: 0;
+    border: none;
+  }
+
+  .search-bar-container.open .search-input {
+    width: 180px;
+    opacity: 1;
+    padding: 5px;
+    border: 1px solid #006A67;
+  }
+
+  .search-bar-container .search_icon {
+    position: static;
+    right: auto;
+  }
+
+  .search-bar-container:not(.open) .search-suggestions,
+  .search-bar-container:not(.open) .no-suggestions {
+    display: none;
+  }
+}

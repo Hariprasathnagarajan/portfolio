@@ -1,0 +1,477 @@
+
+
+.profile-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 25px;
+    justify-content: center;
+    gap: 10px;
+    font-family: 'Arial', sans-serif;
+    padding-left: 180px;
+    position: relative;
+    transition: transform 0.7s ease-in-out;
+}
+
+.profile-container.shift-left {
+    transform: translateX(-150px);
+}
+
+.profile-card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    border: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 120px;
+    transition: transform 0.9s ease-in-out;
+}
+
+.profile-photo {
+    position: relative;
+}
+
+.profile_img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  transition: opacity 0.5s ease-in-out;
+}
+
+
+.profile-initials {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: background 0.5s ease-in-out;
+  margin-bottom: 10px; /* match image spacing */
+}
+
+.remove-profile-icon {
+    position: absolute;
+    top: 100px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    background: white;
+    border-radius: 50%;
+    padding: 4px;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.profile-name {
+    font-size: 14px;
+    font-weight: 200;
+    margin-top: 5px;
+}
+
+.profile-role,
+.profile-location {
+    color: #666;
+    font-size: 14px;
+    margin: 5px 0;
+    line-height: 1.6;
+}
+
+.upload-btn {
+    color: #6c63ff;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.upload-photo {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  background: white;
+  border-radius: 50%;
+  padding: 4px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+
+.edit-btn {
+    color: #6c63ff;
+    font-weight: bold;
+    background: none;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.edit-btn {
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+.profile-edit-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    width: 433px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    position: relative;
+    height: 313px;
+    top: 125px;
+    right: 50px;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.1s ease-in-out, transform 0.7s ease-in-out;
+}
+
+.profile-container.shift-left {
+    transform: translateX(20px);
+}
+.profile-container.shift-left .profile-edit-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.input-group label {
+    font-size: 14px;
+    font-weight: 100;
+    color: #3b3939;
+    margin-bottom: 5px;
+}
+
+.input-group input,
+.input-group select {
+    width: 7%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #fff;
+}
+
+/* Existing save button */
+.save-btn {
+  background-color: #000b58; /* primary dark blue */
+  color: white;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.save-btn:hover:not(:disabled) {
+  background-color: #001070;
+}
+
+.save-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Clear button styled like save but secondary */
+.clear-btn {
+  background-color: #e0e0e0; /* light gray */
+  color: #fffefe; /* dark text */
+  margin-right: 10px;
+}
+
+.clear-btn:hover:not(:disabled) {
+  background-color: #d5d5d5;
+}
+
+.clear-btn:disabled {
+  background-color: #f2f2f2;
+  color: #999;
+  cursor: not-allowed;
+}
+
+/* Group save + clear */
+.edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+
+.divider-container {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.profile-divider {
+    width: 100%;
+    height: 2px;
+    background-color: #ddd;
+}
+
+.cropper-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.cropper-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.profile-title {
+    font-size: 14px;
+    color: #000b58;
+    text-align: center; /* Center the title */
+    width: 100%; /* Ensure it takes full width */
+}
+
+.cropper-modal-content {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 380px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transform: scale(0.85);
+    transition: transform 0.3s ease-in-out;
+}
+
+.cropper-modal.show .cropper-modal-content {
+    transform: scale(1);
+}
+
+.cropper-header {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.cropper-container {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+}
+
+.cropper-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+.cropper-actions button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    width: 45%;
+}
+
+.btn-save-crop {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-save-crop:hover {
+    background-color: #218838;
+}
+
+.btn-cancel-crop {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-cancel-crop:hover {
+    background-color: #c82333;
+}
+
+.backbutton {
+    height: 25px;
+    /* width: 80px; */
+    background: none;  
+    border: none;    
+    border-radius: 25px;  
+    color: #333;        
+    font-size: 14px;    
+    font-weight: 500;  
+    cursor: pointer;    
+    display: flex;      
+    align-items: center;
+    gap: 5px;          
+    transition: color 0.3s ease-in-out;
+    margin: 0%;
+}
+
+.backbutton:hover {
+    color: white;
+    background-color: #9c9a9a;
+}
+
+.edit-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 10px;
+    margin-bottom: 20px;
+}
+/* Add/Modify these styles in your Profile.css file */
+
+.phone-input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.phone-input-fields {
+  display: flex;
+  gap: 10px; /* Adjust gap as needed */
+  width: 100%;
+  align-items: center; /* Align items vertically in the center */
+}
+
+.country-code-select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  flex-shrink: 0; /* Prevent it from shrinking */
+  width: auto; /* Allow width to be determined by content */
+  min-width: 120px; /* Give it a minimum width */
+  background-color: #fff; /* Ensure background is white */
+}
+
+.mobile-number-input {
+  flex-grow: 1; /* Allows it to take remaining space */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Existing styles for input-group, etc. should already be there */
+.input-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.input-group input:not(.mobile-number-input) { /* Exclude mobile-number-input from this general style if it conflicts */
+  width: 7%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+/* Add/Modify these styles in your Profile.css file */
+
+.phone-input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.phone-input-fields {
+  display: flex;
+  gap: 10px; /* Adjust gap as needed */
+  width: 100%;
+  align-items: center; /* Align items vertically in the center */
+}
+
+.country-code-select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  flex-shrink: 0; /* Prevent it from shrinking */
+  width: auto; /* Allow width to be determined by content */
+  min-width: 120px; /* Give it a minimum width */
+  background-color: #fff; /* Ensure background is white */
+}
+
+.mobile-number-input {
+  flex-grow: 1; /* Allows it to take remaining space */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Existing styles for input-group, etc. should already be there */
+.input-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-group input:not(.mobile-number-input) { /* Exclude mobile-number-input from this general style if it conflicts */
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.edit-icon-wrapper {
+  position: absolute;
+  bottom: -4px;     /* Moves it outside vertically */
+  right: -2px;      /* Moves it outside horizontally */
+  background: transparent;
+  padding: 2px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.edit-icon-wrapper:hover .pencil-icon {
+  color: #1976d2;   /* Blue on hover */
+}
+
+.pencil-icon {
+  color: #000;      /* Default black */
+  width: 18px;
+  height: 18px;
+padding-right: 12px;
+padding-bottom: 11px;
+}
+
+

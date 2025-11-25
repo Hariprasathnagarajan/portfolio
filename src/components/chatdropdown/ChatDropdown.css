@@ -1,0 +1,247 @@
+/* Backdrop behind chat dropdown */
+.chat-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.3);
+  z-index: 3999;
+
+  /* Animation */
+  opacity: 0;
+  animation: fadeInBackdrop 0.3s ease forwards;
+}
+
+.chat-backdrop.fade-out {
+  animation: fadeOutBackdrop 0.3s ease forwards;
+}
+
+/* Chat popup container */
+.chat-container {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  width: 380px;
+  max-height: calc(100vh - 80px);
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  z-index: 4000;
+
+  /* Animation */
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: slideFadeIn 0.3s ease forwards;
+}
+
+.chat-container.fade-out {
+  animation: slideFadeOut 0.3s ease forwards;
+}
+.chat-container.closing {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+/* Header */
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  background: #f8f9fa;
+}
+
+.chat-header h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #777;
+  padding: 4px;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+/* Chat list */
+.chat-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  max-height: 450px;
+}
+
+.chat-card {
+  padding: 16px 20px;
+  border-bottom: 1px solid #f5f5f5;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  position: relative;
+}
+
+.chat-card:hover {
+  background-color: #f9f9f9;
+}
+
+.chat-card.unread {
+  background-color: #f8f9ff;
+}
+
+.chat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.chat-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #666;
+}
+
+.chat-title {
+  font-weight: 500;
+  color: #000b58;
+}
+
+.chat-time {
+  font-size: 12px;
+  color: #999;
+}
+
+.chat-messages {
+  margin-top: 6px;
+  max-height: 150px;
+  overflow-y: auto;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.chat-message {
+  margin: 4px 0;
+  color: #333;
+}
+
+.chat-message strong {
+  color: #000b58;
+  font-weight: 600;
+}
+
+.chat-timestamp {
+  display: block;
+  font-size: 11px;
+  color: #999;
+}
+
+/* Unread dot */
+.unread-indicator {
+  position: absolute;
+  top: 20px;
+  right: 16px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #000b58;
+}
+
+/* Loading + Empty + Error states */
+.chat-loading,
+.empty-state,
+.error-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+}
+
+.error-message {
+  color: #ff4d4f;
+}
+
+/* Animations */
+@keyframes fadeInBackdrop {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOutBackdrop {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+/* Custom scrollbar */
+.chat-messages::-webkit-scrollbar,
+.chat-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb,
+.chat-list::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+.unread-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #eaeaea;
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+.unread-title {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.unread-badge {
+  background-color: #007bff;
+  color: white;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 500;
+}
