@@ -1,82 +1,66 @@
-export interface Project {
+export interface Contribution {
   id: string
   title: string
-  slug: string
-  year: string
-  category: ProjectCategory[]
-  technologies: string[]
-  role: string[]
-  shortDescription: string
-  overview: string
-  problem: string
-  solution: string
-  features: string[]
-  architectureSteps: string[]
-  responsibilities: string[]
-  githubUrl?: string
-  liveUrl?: string
-  demoUrl?: string
-  featured: boolean
-  gradient: string
-}
-
-export type ProjectCategory =
-  | 'all'
-  | 'generative-ai'
-  | 'llm-applications'
-  | 'rag-systems'
-  | 'full-stack'
-  | 'frontend'
-  | 'mobile'
-  | 'personal'
-
-export interface Experience {
-  id: string
-  title: string
-  company: string
-  period: string
-  startDate: string
-  endDate: string
-  description: string
-  responsibilities: string[]
-  technologies: string[]
-  type: 'work' | 'education'
-  institution?: string
-  degree?: string
-}
-
-export interface Certification {
-  id: string
-  title: string
-  organization: string
-  year: string
-  description?: string
-}
-
-export interface SkillCategory {
-  category: string
-  level: 'advanced' | 'strong' | 'exploring'
-  items: string[]
-}
-
-export interface SocialLink {
-  platform: string
+  subtitle: string
   url: string
-  icon: string
+  role: string
+  category: string
+  description: string
+  contributionPoints: string[]
+  badgeLabel: string
+  technologies: string[]
+  iconUrl?: string
+  accentColor?: string
 }
 
-export interface ProfileData {
-  name: string
+export interface FeaturedProject {
+  number: string
+  year: string
   title: string
-  specializations: string
-  location: string
-  phone: string
-  email: string
-  linkedin: string
-  github: string
-  portfolio: string
-  bio: string
-  detailedBio: string
-  available: boolean
-  availabilityText: string
+  category: string
+  description: string
+  problemSolved: string
+  keyFeatures: string[]
+  stack: string[]
+  githubUrl: string
+  liveUrl?: string
+  statusLabel: string
+  accent: 'amber' | 'blue' | 'coral' | 'violet'
+}
+
+export interface OpenSourceProject {
+  id: string
+  number: string
+  title: string
+  category: string
+  purpose: string
+  stack: string[]
+  keyFeatures: string[]
+  status: string
+  githubUrl: string
+  isRecommendedFirst?: boolean
+}
+
+export interface SkillGroup {
+  category: string
+  description: string
+  skills: string[]
+}
+
+export interface TimelineEntry {
+  period: string
+  role: string
+  organization: string
+  location?: string
+  summary: string
+  internshipNarrative?: string
+  internshipProjects?: Contribution[]
+  links?: { label: string; url: string }[]
+  technologies?: string[]
+}
+
+export interface WorkStep {
+  number: string
+  title: string
+  description: string
 }
