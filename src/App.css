@@ -319,3 +319,23 @@ button { cursor: pointer; }
   .skill-selector { grid-template-columns: 1fr; }
   .profile-facts strong { max-width: 190px; }
 }
+
+/* GSAP interaction surfaces */
+.live-card-shell { height: 100%; min-width: 0; perspective: 900px; }
+.live-card { position: relative; height: 100%; overflow: hidden; transform-style: preserve-3d; will-change: transform; transition: border-color .25s ease; }
+.live-card::after { content: ''; position: absolute; z-index: 0; pointer-events: none; width: 190px; height: 190px; left: var(--spot-x, 50%); top: var(--spot-y, 50%); transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--accent) 18%, transparent), transparent 68%); opacity: 0; transition: opacity .25s ease; }
+.live-card:hover::after { opacity: 1; }
+.live-card__preview, .live-card__body { position: relative; z-index: 1; }
+.live-card__body { background: rgba(17, 16, 14, .22); }
+@media (prefers-reduced-motion: reduce) {
+  .live-card { transform: none !important; }
+  .live-card::after { display: none; }
+}
+
+/* explicit stacking contexts for readable overlays */
+.topbar { background: var(--ink); isolation: isolate; }
+.hero { isolation: isolate; }
+.hero__copy { z-index: 3; }
+.hero__portrait-wrap { z-index: 1; pointer-events: none; }
+.hero__actions, .hero__role, .hero__intro, .eyebrow { position: relative; z-index: 4; }
+.live-work-section, .work-section, .skills-section, .experience-section { isolation: isolate; }

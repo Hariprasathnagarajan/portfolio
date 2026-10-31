@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import { motion, useScroll, useSpring, type Variants } from 'framer-motion'
+import gsap from 'gsap'
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -123,6 +124,38 @@ function SectionLabel({ number, children }: { number: string; children: string }
   return <div className="section-label"><span className="section-label__number">{number}</span><span className="section-label__line" /><span>{children}</span></div>
 }
 
+function MagneticButton({ href, children, className = '' }: { href: string; children: ReactNode; className?: string }) {
+  const ref = useRef<HTMLAnchorElement>(null)
+
+  const move = (event: React.PointerEvent<HTMLAnchorElement>) => {
+    if (event.pointerType === 'touch' || window.matchMedia('(prefers-reduced-motion: reduce)').matches || !ref.current) return
+    const bounds = ref.current.getBoundingClientRect()
+    gsap.to(ref.current, { x: (event.clientX - bounds.left - bounds.width / 2) * 0.16, y: (event.clientY - bounds.top - bounds.height / 2) * 0.16, duration: 0.35, ease: 'power3.out', overwrite: true })
+  }
+
+  const reset = () => { if (ref.current) gsap.to(ref.current, { x: 0, y: 0, duration: 0.55, ease: 'elastic.out(1, 0.45)', overwrite: true }) }
+
+  return <a ref={ref} href={href} className={className} onPointerMove={move} onPointerLeave={reset}>{children}</a>
+}
+
+function GsapTiltCard({ children, className }: { children: ReactNode; className: string }) {
+  const ref = useRef<HTMLDivElement>(null)
+
+  const move = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === 'touch' || window.matchMedia('(prefers-reduced-motion: reduce)').matches || !ref.current) return
+    const bounds = ref.current.getBoundingClientRect()
+    const rotateX = ((event.clientY - bounds.top) / bounds.height - 0.5) * -4
+    const rotateY = ((event.clientX - bounds.left) / bounds.width - 0.5) * 4
+    ref.current.style.setProperty('--spot-x', `${event.clientX - bounds.left}px`)
+    ref.current.style.setProperty('--spot-y', `${event.clientY - bounds.top}px`)
+    gsap.to(ref.current, { rotateX, rotateY, y: -5, transformPerspective: 900, duration: 0.45, ease: 'power2.out', overwrite: true })
+  }
+
+  const reset = () => { if (ref.current) gsap.to(ref.current, { rotateX: 0, rotateY: 0, y: 0, duration: 0.6, ease: 'power3.out', overwrite: true }) }
+
+  return <div ref={ref} className={className} onPointerMove={move} onPointerLeave={reset}>{children}</div>
+}
+
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('about')
@@ -186,7 +219,7 @@ function App() {
               I&apos;m a computer science postgraduate and developer focused on responsive web applications, practical backend systems, and AI-powered tools. I enjoy turning complicated requirements into simple, reliable experiences.
             </motion.p>
             <motion.div className="hero__role" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.72 }} aria-live="polite"><span>Currently working as</span><strong key={roles[roleIndex]}>{roles[roleIndex]}</strong></motion.div>
-            <motion.div className="hero__actions" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.6 }}><a className="button button--solid" href="#work">Explore my work <ArrowDownRight size={16} /></a><a className="text-link" href="#contact">Get in touch <ArrowUpRight size={15} /></a></motion.div>
+            <motion.div className="hero__actions" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8, duration: 0.6 }}><MagneticButton className="button button--solid" href="#work">Explore my work <ArrowDownRight size={16} /></MagneticButton><a className="text-link" href="#contact">Get in touch <ArrowUpRight size={15} /></a></motion.div>
           </div>
           <motion.div className="hero__portrait-wrap" initial={{ opacity: 0, scale: 0.94, rotate: 2 }} animate={{ opacity: 1, scale: 1, rotate: -2 }} transition={{ duration: 1, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}><div className="hero__portrait-frame"><img src="/photo.jpeg" alt="Hariprasath Nagarajan in a studio portrait" /><span className="hero__portrait-caption">Developer / Trichy, India</span></div></motion.div>
           <div className="hero__meta"><span>↓ Scroll to see the work</span><span>Open to full-stack, Python & AI roles</span></div>
@@ -199,7 +232,7 @@ function App() {
 
         <section className="experience-section" id="experience" aria-labelledby="experience-title"><div className="section-pad experience-section__inner"><motion.div initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={reveal}><SectionLabel number="02">Experience</SectionLabel><h2 id="experience-title">Learning by<br /><em>shipping.</em></h2></motion.div><motion.div className="experience-card" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.25 }} variants={reveal}><div className="experience-card__top"><div><span className="experience-card__eyebrow"><BriefcaseBusiness size={14} /> Internship</span><h3>Full-Stack Developer Intern</h3><p>VDart Academy · Trichy, Tamil Nadu</p></div><span className="experience-card__date">July 2025 — Present</span></div><p className="experience-card__summary">I contribute to live website projects by translating business goals and client requirements into functional, responsive digital experiences.</p><div className="experience-card__work"><span>Work included</span><div><b>VDart Academy</b><b>Website redesign</b><b>VNavigate</b><b>Built from scratch</b><b>VBooking</b><b>Built from scratch</b></div></div></motion.div></div></section>
 
-        <section className="section-pad live-work-section" id="live-work" aria-labelledby="live-title"><motion.div className="section-heading" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={reveal}><SectionLabel number="03">Real-world website contributions</SectionLabel><div className="section-heading__title-row"><h2 id="live-title">Work that went<br /><em>live.</em></h2><p>Projects I contributed to during my internship. Contribution notes are kept separate from the overall project description.</p></div></motion.div><div className="live-grid">{liveSites.map((site, index) => <motion.article className={`live-card live-card--${site.accent}`} key={site.name} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={{ hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0, transition: { delay: index * 0.08, duration: 0.6 } } }}><div className="live-card__preview"><span>LIVE WEBSITE</span><div className="live-card__preview-mark">{site.name.slice(0, 1)}</div><small>Screenshot placeholder — add confirmed preview</small></div><div className="live-card__body"><div className="project-row__topline"><span>{site.category}</span><span>{site.number}</span></div><h3>{site.name}</h3><p className="live-card__contribution">{site.contribution}</p><p>{site.description}</p><div className="live-card__footer"><span>Developer Intern · VDart Academy</span><a href={site.href} target="_blank" rel="noreferrer">Visit website <ExternalLink size={14} /></a></div></div></motion.article>)}</div></section>
+        <section className="section-pad live-work-section" id="live-work" aria-labelledby="live-title"><motion.div className="section-heading" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={reveal}><SectionLabel number="03">Real-world website contributions</SectionLabel><div className="section-heading__title-row"><h2 id="live-title">Work that went<br /><em>live.</em></h2><p>Projects I contributed to during my internship. Contribution notes are kept separate from the overall project description.</p></div></motion.div><div className="live-grid">{liveSites.map((site, index) => <motion.div className="live-card-shell" key={site.name} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={{ hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0, transition: { delay: index * 0.08, duration: 0.6 } } }}><GsapTiltCard className={`live-card live-card--${site.accent}`}><div className="live-card__preview"><span>LIVE WEBSITE</span><div className="live-card__preview-mark">{site.name.slice(0, 1)}</div><small>Screenshot placeholder — add confirmed preview</small></div><div className="live-card__body"><div className="project-row__topline"><span>{site.category}</span><span>{site.number}</span></div><h3>{site.name}</h3><p className="live-card__contribution">{site.contribution}</p><p>{site.description}</p><div className="live-card__footer"><span>Developer Intern · VDart Academy</span><a href={site.href} target="_blank" rel="noreferrer">Visit website <ExternalLink size={14} /></a></div></div></GsapTiltCard></motion.div>)}</div></section>
 
         <section className="section-pad work-section" id="work" aria-labelledby="work-title"><motion.div className="section-heading" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={reveal}><SectionLabel number="04">Featured projects</SectionLabel><div className="section-heading__title-row"><h2 id="work-title">Projects from<br /><em>the workbench.</em></h2><p>Practical technical projects covering AI applications, full-stack products, and realtime web experiences.</p></div></motion.div><div className="featured-list">{featuredProjects.map((project, index) => <motion.a className={`featured-row featured-row--${project.accent}`} href={project.href} target="_blank" rel="noreferrer" key={project.number} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }} variants={{ hidden: { opacity: 0, y: 18 }, visible: { opacity: 1, y: 0, transition: { delay: index * 0.06, duration: 0.6 } } }}><div className="featured-row__number">{project.number}</div><div className="featured-row__main"><div className="project-row__topline"><span>{project.category}</span><span>GitHub</span></div><h3>{project.title}</h3><p>{project.description}</p><div className="featured-row__features">{project.features.map((feature) => <span key={feature}>{feature}</span>)}</div><div className="tag-list">{project.stack.map((tag) => <span key={tag}>{tag}</span>)}</div></div><div className="project-row__arrow"><ArrowUpRight size={24} /></div></motion.a>)}</div><div className="work-section__footer"><span>More repositories and unfinished experiments</span><a className="text-link" href="https://github.com/Hariprasathnagarajan" target="_blank" rel="noreferrer">See GitHub <ArrowUpRight size={15} /></a></div></section>
 
